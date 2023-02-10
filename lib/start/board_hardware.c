@@ -14,20 +14,20 @@
  * limitations under the License.
  */
 
-#include "libs/nxp/rt1176-sdk/board_hardware.h"
+#include "board_hardware.h"
 
 #include <stdio.h>
 #include <string.h>
 
-#include "third_party/modified/nxp/rt1176-sdk/board.h"
-#include "third_party/modified/nxp/rt1176-sdk/pin_mux.h"
-#include "third_party/nxp/rt1176-sdk/components/flash/nand/flexspi/fsl_flexspi_nand_flash.h"
-#include "third_party/nxp/rt1176-sdk/components/flash/nand/fsl_nand_flash.h"
-#include "third_party/nxp/rt1176-sdk/devices/MIMXRT1176/drivers/fsl_caam.h"
-#include "third_party/nxp/rt1176-sdk/devices/MIMXRT1176/drivers/fsl_enet.h"
-#include "third_party/nxp/rt1176-sdk/devices/MIMXRT1176/drivers/fsl_ocotp.h"
-#include "third_party/nxp/rt1176-sdk/devices/MIMXRT1176/drivers/fsl_semc.h"
-#include "third_party/nxp/rt1176-sdk/middleware/multicore/mcmgr/src/mcmgr.h"
+#include "modified/board.h"
+#include "modified/pin_mux.h"
+#include "components/flash/nand/flexspi/fsl_flexspi_nand_flash.h"
+#include "components/flash/nand/fsl_nand_flash.h"
+#include "devices/MIMXRT1176/drivers/fsl_caam.h"
+#include "devices/MIMXRT1176/drivers/fsl_enet.h"
+#include "devices/MIMXRT1176/drivers/fsl_ocotp.h"
+#include "devices/MIMXRT1176/drivers/fsl_semc.h"
+#include "middleware/multicore/mcmgr/src/mcmgr.h"
 
 #if __CORTEX_M == 7
 extern uint32_t __SDRAM_ROM;

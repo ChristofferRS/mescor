@@ -15,15 +15,15 @@
  */
 
 // clang-format off
-#include "third_party/modified/nxp/rt1176-sdk/usb_device_config.h"
-#include "third_party/nxp/rt1176-sdk/middleware/usb/device/usb_device.h"
-#include "third_party/nxp/rt1176-sdk/middleware/usb/include/usb.h"
-#include "third_party/nxp/rt1176-sdk/middleware/usb/output/source/device/class/usb_device_class.h"
-#include "third_party/nxp/rt1176-sdk/middleware/usb/output/source/device/class/usb_device_cdc_acm.h"
+#include "modified/usb_device_config.h"
+#include "middleware/usb/device/usb_device.h"
+#include "middleware/usb/include/usb.h"
+#include "middleware/usb/output/source/device/class/usb_device_class.h"
+#include "middleware/usb/output/source/device/class/usb_device_cdc_acm.h"
 // clang-format on
 
 #if USB_DEVICE_CONFIG_CDC_EEM
-#include "libs/nxp/rt1176-sdk/usb_device_cdc_eem.h"
+#include "usb_device_cdc_eem.h"
 
 USB_GLOBAL USB_RAM_ADDRESS_ALIGNMENT(
     USB_DATA_ALIGN_SIZE) static usb_device_cdc_eem_struct_t

@@ -135,6 +135,7 @@ m4_c_args += '-DCPU_MIMXRT1176CVM8A_cm4'
 
 deps = []
 deps  += dependency('libc', fallback: ['picolibc', 'picolibc_dep'])
+deps  += dependency('cmsis', fallback: ['cmsis', 'cmsis_dep'])
 
 m7_lib = static_library('m7_lib',
   include_directories : base_inc,
