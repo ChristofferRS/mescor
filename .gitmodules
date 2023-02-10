@@ -1,3 +1,6 @@
 [submodule "lib/picolibc"]
 	path = lib/picolibc
 	url = git@github.com:picolibc/picolibc.git
+[submodule "lib/freertos/upstream"]
+	path = lib/freertos/upstream
+	url = git@github.com:FreeRTOS/FreeRTOS-Kernel.git
