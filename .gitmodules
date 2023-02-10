@@ -1,0 +1,6 @@
+[submodule "lib/freertos"]
+	path = lib/freertos
+	url = git@github.com:spaceinventor/libfreertos.git
+[submodule "lib/picolibc"]
+	path = lib/picolibc
+	url = git@github.com:picolibc/picolibc.git
