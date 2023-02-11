@@ -34,7 +34,6 @@ freertos_src = files([
 
 freertos_deps = []
 freertos_deps += dependency('start', fallback: ['start', 'start_dep'])
-freertos_deps += dependency('libc', fallback: ['picolibc', 'picolibc_dep'])
 
 freertos_inc += sdir + 'portable/GCC/ARM_CM4F'
 freertos_inc += 'src'

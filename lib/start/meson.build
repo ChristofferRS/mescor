@@ -17,6 +17,8 @@ base_inc = include_directories([
     'src/components/uart',
     'src/devices/MIMXRT1176',
     'src/devices/MIMXRT1176/drivers',
+    'src/devices/MIMXRT1176/drivers/cm4',
+    'src/devices/MIMXRT1176/drivers/cm7',
     'src/devices/MIMXRT1176/utilities/debug_console',
     'src/devices/MIMXRT1176/utilities/str',
     'src/devices/MIMXRT1176/xip',
@@ -27,6 +29,7 @@ base_inc = include_directories([
     'src/middleware/usb/output/source/device',
     'src/middleware/usb/output/source/device/class',
     'src/middleware/usb/phy',
+    'src/middleware/multicore/mcmgr/src',
 ])
 
 base_src = files([
@@ -137,6 +140,26 @@ deps = []
 deps  += dependency('libc', fallback: ['picolibc', 'picolibc_dep'])
 deps  += dependency('cmsis', fallback: ['cmsis', 'cmsis_dep'])
 
+mcmgr_inc = include_directories([
+    'src/middleware/multicore/mcmgr/src',
+    ])
+
+mcmgr_src = files([
+    'src/middleware/multicore/mcmgr/src/mcmgr.c',
+    'src/middleware/multicore/mcmgr/src/mcmgr_internal_core_api_imxrt1170.c',
+    'src/middleware/multicore/mcmgr/src/mcmgr_mu_internal.c',
+    ])
+
+mcmgr_c_args = []
+mcmgr_c_args += '-DMCMGR_HANDLE_EXCEPTIONS=1'
+
+mcmgr_lib = static_library('mcmgr_lib',
+  include_directories : mcmgr_inc,
+  sources : mcmgr_src,
+  c_args : mcmgr_c_args
+  )
+
+
 m7_lib = static_library('m7_lib',
   include_directories : base_inc,
   sources : base_src + m7_src,
@@ -153,12 +176,12 @@ m4_lib = static_library('m4_lib',
 
 m7_dep = declare_dependency(
   include_directories : base_inc,
-  link_with : m7_lib,
+  link_with : [mcmgr_lib, m7_lib],
   compile_args : base_c_args + m7_c_args,
   )
 m4_dep = declare_dependency(
   include_directories : base_inc,
-  link_with : m4_lib,
+  link_with : [mcmgr_lib,m4_lib],
   compile_args : base_c_args + m4_c_args,
   )
-start_dep = m4_dep
+start_dep = m7_dep

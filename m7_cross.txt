@@ -1,0 +1,18 @@
+[binaries]
+c = 'arm-none-eabi-gcc'
+ar = 'arm-none-eabi-gcc-ar'
+strip = 'arm-none-eabi-strip'
+
+[host_machine]
+system = 'freertos'
+cpu_family = 'arm'
+cpu = ''
+endian = 'little'
+
+[properties]
+freertos_port = 'GCC/ARM_CM4F'
+
+[built-in options]
+c_args = [ '-mcpu=cortex-m7' ,'-mfloat-abi=hard' ,'-mfpu=fpv5-d16']
+c_link_args = [ '-Xlinker','--defsym=__use_shmem__=1','-mcpu=cortex-m7' ,'-mfloat-abi=hard' ,'-mfpu=fpv5-d16']
+

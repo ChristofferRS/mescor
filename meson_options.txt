@@ -1,0 +1,1 @@
+option('M', type: 'integer', value: 7, description: 'M7 or M4')

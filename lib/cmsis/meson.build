@@ -46,18 +46,60 @@ src=files([
     'CMSIS/NN/Source/SoftmaxFunctions/arm_softmax_s8_s16.c',
     ])
 
+#cm7_c_flags = []
+#cm7_c_flags = '-mcpu=cortex-m7'
+#cm7_c_flags = '-mfloat-abi=hard'
+#cm7_c_flags = '-mfpu=fpv5-d16'
+#
+#common_link_flags = []
+#common_link_flags += '-Xlinker'
+#common_link_flags += '--defsym=__use_shmem__=1'
+#
+#cm7_link_flags = []
+#cm7_link_flags += '-mcpu=cortex-m7'
+#cm7_link_flags += '-mfloat-abi=hard'
+#cm7_link_flags += '-mfpu=fpv5-d16'
+##cm7_link_flags += '-Tcm7.ld'
+#
+#cm4_c_flags = []
+#cm4_c_flags += '-mcpu=cortex-m4'
+#cm4_c_flags += '-mfloat-abi=hard'
+#cm4_c_flags += '-mfpu=fpv4-sp-d16'
+#cm4_c_flags += '-DNDEBUG'
+#
+#cm4_link_flags = []
+#cm4_link_flags += '-mcpu=cortex-m4'
+#cm4_link_flags += '-mfloat-abi=hard'
+#cm4_link_flags += '-mfpu=fpv4-sp-d16'
+##cm4_link_flags += '-Tcm4.ld'
+#
+#
+#m = get_option('M')
+#c_args=[]
+#if m == 7
+#  link_args = cm7_link_flags + common_link_flags
+#  #c_args = cm7_c_flags
+#elif m == 4
+#  link_args = cm4_link_flags + common_link_flags
+#  #c_args = cm4_c_flags
+#else
+#    error('INVALID M!')
+#endif
+
+
 inc = include_directories(
   '.',
   'CMSIS/Core/Include',
   'CMSIS/DSP/Include',
   'CMSIS/NN/Include'
-)
+  )
 
 
 cmsis_lib = static_library('cmsis',
   include_directories : inc,
   sources : src,
   c_args : [],
+  link_args : [],
   dependencies : [],
   )
 

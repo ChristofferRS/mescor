@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-#include "third_party/freertos_kernel/include/FreeRTOS.h"
-#include "third_party/nxp/rt1176-sdk/middleware/multicore/mcmgr/src/mcmgr.h"
+#include "FreeRTOS.h"
+#include "mcmgr.h"
 
 #if __CORTEX_M == 7
 void vGeneratePrimaryToSecondaryInterrupt(void* pxStreamBuffer) {
